@@ -36,6 +36,6 @@ I am a Junior Front-End Developer and Junior Game Developer from Turkey.
 ---
 
 ### 🔥 &nbsp; My Stats :
-[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=HazarAliyazicioglu&theme=dark&hide_border=true&mode=weekly)](https://git.io/streak-stats)
+[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=HazarAliyazicioglu&theme=dark&hide_border=true&mode=weekly)]
 
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=HazarAliyazicioglu&layout=compact&theme=vision-friendly-dark)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=HazarAliyazicioglu&layout=compact&theme=vision-friendly-dark)]
