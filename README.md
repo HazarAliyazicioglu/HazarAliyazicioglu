@@ -4,7 +4,7 @@
 <p align="center">
 <a href="https://www.linkedin.com/in/hazar-aliyazıcıoğlu/"><img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"></a>
  <a href="https://www.instagram.com/hazaraliyzcgll/"><img src="https://img.shields.io/badge/Instagram-ff0069?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram Badge"></a>
- <a href="https://rainaud.itch.io/"><img src="https://img.shields.io/badge/itch.io-ff0069?style=for-the-badge&logo=itch.io&logoColor=white" alt="itch.io Badge"></a>
+ <a href="https://rainaud.itch.io/"><img src="https://img.shields.io/badge/itch.io-E55B57?style=for-the-badge&logo=itch.io&logoColor=white" alt="itch.io Badge"></a>
 </p>
 <p align="center"><img src="https://komarev.com/ghpvc/?username=hazar-aliyazicioglu&style=flat-square&color=blue" alt=""></p>
 
