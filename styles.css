@@ -137,10 +137,14 @@ nav ul li a:hover::after {
 }
 
 #changing-text {
-    color: #ff6200;
+    color: #ff6200 !important;
     font-weight: 600;
     position: relative;
     z-index: 2;
+    -webkit-text-fill-color: #ff6200 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
 }
 
 .hero-buttons {
@@ -552,6 +556,15 @@ footer {
         line-height: 1.2;
     }
     
+    #changing-text {
+        color: #ff6200 !important;
+        -webkit-text-fill-color: #ff6200 !important;
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        background-clip: unset !important;
+        font-weight: 600;
+    }
+    
     .hero-section p {
         font-size: 1rem;
         line-height: 1.5;
@@ -665,6 +678,15 @@ footer {
         font-size: 1.6rem;
     }
     
+    #changing-text {
+        color: #ff6200 !important;
+        -webkit-text-fill-color: #ff6200 !important;
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        background-clip: unset !important;
+        font-weight: 600;
+    }
+    
     .hero-section p {
         font-size: 0.9rem;
     }
@@ -751,6 +773,15 @@ footer {
 @media (max-width: 360px) {
     .hero-section h1 {
         font-size: 1.4rem;
+    }
+    
+    #changing-text {
+        color: #ff6200 !important;
+        -webkit-text-fill-color: #ff6200 !important;
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        background-clip: unset !important;
+        font-weight: 600;
     }
     
     .hero-section p {
