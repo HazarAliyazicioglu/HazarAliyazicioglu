@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hazar's Portfolio</title>
+    <title>Hazar Aliyazıcıoğlu - Portfolio</title>
+    <meta name="description" content="Hazar Aliyazıcıoğlu'nun kişisel portfolyosu - Oyun geliştirici, ABAP ve Backend geliştirici">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
@@ -12,97 +13,192 @@
         <div class="logo">Hazar Aliyazıcıoğlu</div>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#about">About Me</a></li>
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#projects">Projeler</a></li>
+                <li><a href="#contact">İletişim</a></li>
             </ul>
         </nav>
     </header>
 
     <section id="home" class="hero-section">
-    <h1>Hi, My name is Hazar <br> I'm a <span id="changing-text"></span> Developer</h1>
-    <p>Creating fun games and functional systems with every line of code.</p>
-    <a href="https://drive.google.com/drive/u/1/folders/1_6DbgOGzKaGkRjXgdDFS5pjhnPZaqlim" class="cta-button">My CV</a>
+        <div class="hero-content">
+            <h1>Merhaba, Ben Hazar<br>Ben bir <span id="changing-text"></span> Geliştiricisiyim</h1>
+        </div>
+        <p>Her satır kodla eğlenceli oyunlar ve işlevsel sistemler yaratıyorum.</p>
+            <div class="hero-buttons">
+                <a href="https://drive.google.com/drive/u/1/folders/1_6DbgOGzKaGkRjXgdDFS5pjhnPZaqlim" class="cta-button">CV'mi İndir</a>
+                <a href="#projects" class="cta-button secondary">Projelerimi Gör</a>
+            </div>
     </section>
 
     <section id="about">
+        <h2>Hakkımda</h2>
         <div class="about-container">
-            <h2>About Me</h2>
-            <p>Hello! I'm Hazar Aliyazıcıoğlu, a developer with experience in backend and game development. Recently, I have been focusing on improving my skills in ABAP to expand my expertise in enterprise software development. At the same time, I continue to build on my experience in backend and game development by working on different projects and exploring new technologies.</p>
-            <p>I have always been passionate about coding and problem-solving. In backend and game development, I have gained valuable experience by developing various projects that require creativity, logical thinking, and strong technical skills. Now, by learning ABAP, I am deepening my understanding of enterprise systems and strengthening my ability to create efficient and scalable solutions.</p>
-            <p>I believe that continuous learning is essential in the tech industry, and I am always eager to take on new challenges. Whether it's designing game mechanics, optimizing backend performance, or writing clean and effective ABAP code, I am committed to improving myself and delivering high-quality work. With a strong passion for development, I am excited to grow in my career and make a meaningful impact. If you are interested in my work or want to learn more about my projects, feel free to reach out or explore my portfolio.</p>
+            <div class="about-content">
+                <p>Merhaba! Ben Hazar Aliyazıcıoğlu, backend ve oyun geliştirme konularında deneyime sahip bir geliştiriciyim. Son zamanlarda, kurumsal yazılım geliştirme alanındaki uzmanlığımı genişletmek için ABAP becerilerimi geliştirmeye odaklanıyorum. Aynı zamanda, farklı projeler üzerinde çalışarak ve yeni teknolojiler keşfederek backend ve oyun geliştirme deneyimimi geliştirmeye devam ediyorum.</p>
+                
+                <p>Kodlama ve problem çözme konularında her zaman tutkulu oldum. Backend ve oyun geliştirme alanlarında, yaratıcılık, mantıksal düşünme ve güçlü teknik beceriler gerektiren çeşitli projeler geliştirerek değerli deneyim kazandım. Şimdi ABAP öğrenerek, kurumsal sistemler hakkındaki anlayışımı derinleştiriyor ve verimli, ölçeklenebilir çözümler oluşturma yeteneğimi güçlendiriyorum.</p>
+                
+                <p>Sürekli öğrenmenin teknoloji endüstrisinde temel olduğuna inanıyorum ve her zaman yeni zorlukları üstlenmeye hevesliyim. İster oyun mekanikleri tasarlamak, backend performansını optimize etmek, ister temiz ve etkili ABAP kodu yazmak olsun, kendimi geliştirmeye ve yüksek kaliteli işler sunmaya kararlıyım. Geliştirme tutkusuyla, kariyerimde büyümek ve anlamlı bir etki yaratmak için heyecan duyuyorum.</p>
+            </div>
+            
+            <div class="skills-section">
+                <h3>Teknolojiler & Beceriler</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Oyun Geliştirme</h4>
+                        <ul>
+                            <li>Unity</li>
+                            <li>C#</li>
+                            <li>Game Design</li>
+                            <li>2D/3D Graphics</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend Geliştirme</h4>
+                        <ul>
+                            <li>ABAP</li>
+                            <li>Java</li>
+                            <li>Python</li>
+                            <li>Database Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Web Teknolojileri</h4>
+                        <ul>
+                            <li>HTML/CSS</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                            <li>Node.js</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             
             <div class="social-links">
-                <a href="https://github.com/HazarAliyazicioglu">GitHub</a>
-                <a href="https://www.linkedin.com/in/hazaraliyazicioglu">LinkedIn</a>
-                <a href="https://rainaud.itch.io/">Itch.io</a>
-                <a href="https://medium.com/@hazaraliyazicioglu">Medium</a>
-                <a href="mailto:sizin.emailiniz@example.com">Email</a>
+                <a href="https://github.com/HazarAliyazicioglu" target="_blank">GitHub</a>
+                <a href="https://rainaud.itch.io/" target="_blank">Itch.io</a>
+                <a href="https://medium.com/@hazaraliyazicioglu" target="_blank">Medium</a>
             </div>
-        
         </div>
     </section>
 
-
     <section id="projects">
-        <h2>My Games</h2>
+        <h2>Oyun Projelerim</h2>
         <div class="project-cards">
-        
             <div class="card">
-                <h3 style="color: #ff6200";>Breaker Pong Game</h3>
-                
-                <p>A game that you can play a Brick Breaker Clone or a Pong Clone </p>
-                <video controls>
-                    <source src="\Breaker Pong Game.mp4" type="video/mp4">
-                </video>
-                <p>Technologies: Unity, C#, etc.</p>
-                <a href="https://rainaud.itch.io/breaker-pong-game" class="cta-button">Download Now</a>
+                <div class="card-header">
+                    <h3>Breaker Pong Game</h3>
+                    <span class="project-type">Unity Game</span>
+                </div>
+                <p>Brick Breaker Clone veya Pong Clone oynayabileceğiniz bir oyun. Klasik arcade oyunlarının modern bir yorumu.</p>
+                <div class="video-container">
+                    <video controls>
+                        <source src="Breaker Pong Game.mp4" type="video/mp4">
+                        Tarayıcınız video oynatmayı desteklemiyor.
+                    </video>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Unity</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">2D Graphics</span>
+                </div>
+                <a href="https://rainaud.itch.io/breaker-pong-game" class="cta-button" target="_blank">Oyunu İndir</a>
             </div>
+
             <div class="card">
-                <h3 style="color: #ff6200";>Bean Runner</h3>
-                
-                <p>Bean Runner is a clone game in the endless running game genre.</p>
-                <video controls>
-                    <source src="\Bean Runner Gameplay.mp4" type="video/mp4">
-                </video>
-                <p>Technologies: Unity, C#, etc.</p>
-                <a href="https://rainaud.itch.io/bean-runner" class="cta-button">Download Now</a>
+                <div class="card-header">
+                    <h3>Bean Runner</h3>
+                    <span class="project-type">Endless Runner</span>
+                </div>
+                <p>Bean Runner, sonsuz koşu oyun türünde bir klon oyun. Karakterinizi kontrol ederek engellerden kaçın ve puan toplayın.</p>
+                <div class="video-container">
+                    <video controls>
+                        <source src="Bean Runner Gameplay.mp4" type="video/mp4">
+                        Tarayıcınız video oynatmayı desteklemiyor.
+                    </video>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Unity</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">Procedural Generation</span>
+                </div>
+                <a href="https://rainaud.itch.io/bean-runner" class="cta-button" target="_blank">Oyunu İndir</a>
             </div>
+
             <div class="card">
-                <h3 style="color: #ff6200";>Minya Platformer Game</h3>
-                
-                <p>Mini platformer game that you can control a cute character</p>
-                <video controls>
-                    <source src="\Minya Platform Gameplay.mp4" type="video/mp4">
-                </video>
-                <p>Technologies: Unity, C#, etc.</p>
-                <a href="https://rainaud.itch.io/minya" class="cta-button">Download Now</a>
+                <div class="card-header">
+                    <h3>Minya Platformer</h3>
+                    <span class="project-type">Platform Game</span>
+                </div>
+                <p>Sevimli bir karakteri kontrol edebileceğiniz mini platform oyunu. Zıplama mekanikleri ve seviye tasarımı ile eğlenceli bir deneyim.</p>
+                <div class="video-container">
+                    <video controls>
+                        <source src="Minya Platform Gameplay.mp4" type="video/mp4">
+                        Tarayıcınız video oynatmayı desteklemiyor.
+                    </video>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Unity</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">Level Design</span>
+                </div>
+                <a href="https://rainaud.itch.io/minya" class="cta-button" target="_blank">Oyunu İndir</a>
             </div>
+
             <div class="card">
-                <h3 style="color: #ff6200";>Snake Game Clone</h3>
-                
-                <p>The first game that I made, by following Sebastian Lague's Tutorial </p>
-                <video controls>
-                    <source src="\Snake Game Clone Gameplay.mp4" type="video/mp4">
-                </video>
-                <p>Technologies: Unity, C#, etc.</p>
-                <a href="https://rainaud.itch.io/snake-game-v10" class="cta-button">Play Now</a>
+                <div class="card-header">
+                    <h3>Snake Game Clone</h3>
+                    <span class="project-type">Classic Remake</span>
+                </div>
+                <p>Sebastian Lague'nin Tutorial'ını takip ederek yaptığım ilk oyun. Klasik Snake oyununun modern bir versiyonu.</p>
+                <div class="video-container">
+                    <video controls>
+                        <source src="Snake Game Clone Gameplay.mp4" type="video/mp4">
+                        Tarayıcınız video oynatmayı desteklemiyor.
+                    </video>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">Unity</span>
+                    <span class="tech-tag">C#</span>
+                    <span class="tech-tag">First Project</span>
+                </div>
+                <a href="https://rainaud.itch.io/snake-game-v10" class="cta-button" target="_blank">Oyna</a>
             </div>
-            <!--<div class="card">
-                <h3 style="color: #ff6200";>Breaker Pong Game</h3>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>İletişim</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Benimle İletişime Geçin</h3>
+                <p>Projelerim hakkında daha fazla bilgi almak, işbirliği yapmak veya sadece merhaba demek isterseniz, aşağıdaki kanallardan bana ulaşabilirsiniz.</p>
                 
-                <p>A game that you can play a Brick Breaker Clone or a Pong Clone </p>
-                <video controls>
-                    <source src="\Hazar\Breaker Pong Game.mp4" type="video/mp4">
-                </video>
-                <p>Technologies: Unity, C#, etc.</p>
-                <a href="link_to_game" class="cta-button">Play Now</a>
-            </div> -->
+                <div class="contact-links">
+                    <a href="mailto:aliyaziciogluhazar@gmail.com" class="contact-button">
+                        <span class="contact-icon">📧</span>
+                        <span class="contact-text">Email</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/hazaraliyazicioglu" target="_blank" class="contact-button">
+                        <span class="contact-icon">💼</span>
+                        <span class="contact-text">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/HazarAliyazicioglu" target="_blank" class="contact-button">
+                        <span class="contact-icon">🐙</span>
+                        <span class="contact-text">GitHub</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        
+        <div class="footer-content">
+            <p>&copy; 2024 Hazar Aliyazıcıoğlu. Tüm hakları saklıdır.</p>
+            <p>Bu portfolyo HTML, CSS ve JavaScript ile yapılmıştır.</p>
+        </div>
     </footer>
 </body>
 </html>
