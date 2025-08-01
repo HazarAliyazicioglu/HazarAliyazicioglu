@@ -1,19 +1,34 @@
 // Modern Portfolio JavaScript
 
+// Dil değiştirme sistemi
+let currentLanguage = 'tr'; // Varsayılan dil Türkçe
+const words = {
+    tr: ["Oyun", "ABAP", "Backend"],
+    en: ["Game", "ABAP", "Backend"]
+};
+
 // Sayfa başlığı değiştirme efekti
 document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') {
-        document.title = 'Aradığın portföy burada :)';
+        if (currentLanguage === 'tr') {
+            document.title = 'Aradığın portföy burada :)';
+        } else {
+            document.title = 'Your portfolio is here :)';
+        }
     } else {
-        document.title = "Hazar Aliyazıcıoğlu - Portfolio";
+        if (currentLanguage === 'tr') {
+            document.title = "Hazar Aliyazıcıoğlu - Portfolio";
+        } else {
+            document.title = "Hazar Aliyazıcıoğlu - Portfolio";
+        }
     }
 });
 
 // Yazı animasyonu için değişkenler
-const words = ["Oyun", "ABAP", "Backend"];
 let index = 0;
 let charIndex = 0;
 let isDeleting = false;
+let typeEffectTimeout = null; // Timeout ID'si için
 const writingSpeed = 100;
 const deletingSpeed = 150;
 const waitAfterTyping = 1000;
@@ -26,7 +41,119 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeCardAnimations();
     initializeMobileNavigation();
     initializeVideoEffects();
+    initializeLanguageToggle();
 });
+
+// Dil değiştirme işlevselliği
+function initializeLanguageToggle() {
+    const languageToggle = document.getElementById('language-toggle');
+    
+    if (languageToggle) {
+        languageToggle.addEventListener('click', () => {
+            toggleLanguage();
+        });
+        
+        // Hover efekti ekle
+        languageToggle.addEventListener('mouseenter', () => {
+            languageToggle.style.transform = 'scale(1.05)';
+        });
+        
+        languageToggle.addEventListener('mouseleave', () => {
+            languageToggle.style.transform = 'scale(1)';
+        });
+    }
+}
+
+// Dil değiştirme fonksiyonu
+function toggleLanguage() {
+    currentLanguage = currentLanguage === 'tr' ? 'en' : 'tr';
+    
+    // Tüm çevrilebilir elementleri bul ve güncelle
+    const translatableElements = document.querySelectorAll('[data-tr][data-en]');
+    
+    translatableElements.forEach(element => {
+        if (currentLanguage === 'en') {
+            element.textContent = element.getAttribute('data-en');
+        } else {
+            element.textContent = element.getAttribute('data-tr');
+        }
+    });
+    
+    // HTML lang attribute'unu güncelle
+    document.documentElement.lang = currentLanguage;
+    
+    // Sayfa başlığını güncelle
+    if (currentLanguage === 'tr') {
+        document.title = "Hazar Aliyazıcıoğlu - Portfolio";
+    } else {
+        document.title = "Hazar Aliyazıcıoğlu - Portfolio";
+    }
+    
+    // Dil göstergesini güncelle
+    const logo = document.querySelector('.logo');
+    if (currentLanguage === 'tr') {
+        logo.classList.remove('en');
+    } else {
+        logo.classList.add('en');
+    }
+    
+    // Yazı animasyonunu yeniden başlat
+    resetTypeEffect();
+    
+    // Mobil menüyü kapat (eğer açıksa)
+    const nav = document.querySelector('nav');
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    if (nav && nav.classList.contains('active')) {
+        nav.classList.remove('active');
+        mobileNavToggle.textContent = '☰';
+        mobileNavToggle.setAttribute('aria-label', currentLanguage === 'tr' ? 'Menüyü aç' : 'Open menu');
+    }
+    
+    // Mobil menü aria-label'larını güncelle
+    if (mobileNavToggle) {
+        mobileNavToggle.setAttribute('aria-label', currentLanguage === 'tr' ? 'Menüyü aç/kapat' : 'Open/close menu');
+    }
+    
+    // Smooth scroll linklerinin aria-label'larını güncelle
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === '#home') {
+            link.setAttribute('aria-label', currentLanguage === 'tr' ? 'Ana sayfaya git' : 'Go to home');
+        } else if (href === '#about') {
+            link.setAttribute('aria-label', currentLanguage === 'tr' ? 'Hakkımda bölümüne git' : 'Go to about section');
+        } else if (href === '#projects') {
+            link.setAttribute('aria-label', currentLanguage === 'tr' ? 'Projeler bölümüne git' : 'Go to projects section');
+        } else if (href === '#contact') {
+            link.setAttribute('aria-label', currentLanguage === 'tr' ? 'İletişim bölümüne git' : 'Go to contact section');
+        }
+    });
+    
+    // Dil değiştirme animasyonu
+    logo.style.transform = 'scale(1.1)';
+    setTimeout(() => {
+        logo.style.transform = 'scale(1)';
+    }, 200);
+}
+
+// Yazı animasyonunu sıfırla
+function resetTypeEffect() {
+    // Önceki animasyonu durdur
+    if (typeEffectTimeout) {
+        clearTimeout(typeEffectTimeout);
+        typeEffectTimeout = null;
+    }
+    
+    index = 0;
+    charIndex = 0;
+    isDeleting = false;
+    
+    const textElement = document.getElementById("changing-text");
+    if (textElement) {
+        textElement.textContent = words[currentLanguage][index][0];
+        typeEffect(textElement);
+    }
+}
 
 // Mobil navigasyon işlevselliği
 function initializeMobileNavigation() {
@@ -41,10 +168,10 @@ function initializeMobileNavigation() {
             // Hamburger menü ikonunu değiştir
             if (nav.classList.contains('active')) {
                 mobileNavToggle.textContent = '✕';
-                mobileNavToggle.setAttribute('aria-label', 'Menüyü kapat');
+                mobileNavToggle.setAttribute('aria-label', currentLanguage === 'tr' ? 'Menüyü kapat' : 'Close menu');
             } else {
                 mobileNavToggle.textContent = '☰';
-                mobileNavToggle.setAttribute('aria-label', 'Menüyü aç');
+                mobileNavToggle.setAttribute('aria-label', currentLanguage === 'tr' ? 'Menüyü aç' : 'Open menu');
             }
         });
 
@@ -53,7 +180,7 @@ function initializeMobileNavigation() {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
                 mobileNavToggle.textContent = '☰';
-                mobileNavToggle.setAttribute('aria-label', 'Menüyü aç');
+                mobileNavToggle.setAttribute('aria-label', currentLanguage === 'tr' ? 'Menüyü aç' : 'Open menu');
             });
         });
 
@@ -62,7 +189,7 @@ function initializeMobileNavigation() {
             if (!nav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
                 nav.classList.remove('active');
                 mobileNavToggle.textContent = '☰';
-                mobileNavToggle.setAttribute('aria-label', 'Menüyü aç');
+                mobileNavToggle.setAttribute('aria-label', currentLanguage === 'tr' ? 'Menüyü aç' : 'Open menu');
             }
         });
 
@@ -71,7 +198,7 @@ function initializeMobileNavigation() {
             if (window.innerWidth > 768) {
                 nav.classList.remove('active');
                 mobileNavToggle.textContent = '☰';
-                mobileNavToggle.setAttribute('aria-label', 'Menüyü aç');
+                mobileNavToggle.setAttribute('aria-label', currentLanguage === 'tr' ? 'Menüyü aç' : 'Open menu');
             }
         });
     }
@@ -81,7 +208,7 @@ function initializeMobileNavigation() {
 function initializeTypeEffect() {
     const textElement = document.getElementById("changing-text");
     if (textElement) {
-        textElement.textContent = words[index][0];
+        textElement.textContent = words[currentLanguage][index][0];
         // Sadece değişen kelimeler için animasyon ekle
         textElement.style.animation = 'fadeInUp 1s ease-out';
         typeEffect(textElement);
@@ -90,7 +217,7 @@ function initializeTypeEffect() {
 
 // Yazı animasyonu fonksiyonu
 function typeEffect(textElement) {
-    let currentWord = words[index];
+    let currentWord = words[currentLanguage][index];
 
     if (!isDeleting) {
         textElement.textContent = currentWord.substring(0, charIndex++);
@@ -99,17 +226,17 @@ function typeEffect(textElement) {
     }
 
     if (!isDeleting && charIndex === currentWord.length + 1) {
-        setTimeout(() => {
+        typeEffectTimeout = setTimeout(() => {
             isDeleting = true;
             typeEffect(textElement);
         }, waitAfterTyping);
         return;
     } else if (isDeleting && charIndex === -1) {
         isDeleting = false;
-        index = (index + 1) % words.length;
+        index = (index + 1) % words[currentLanguage].length;
     }
 
-    setTimeout(() => typeEffect(textElement), isDeleting ? deletingSpeed : writingSpeed);
+    typeEffectTimeout = setTimeout(() => typeEffect(textElement), isDeleting ? deletingSpeed : writingSpeed);
 }
 
 // Scroll efektleri

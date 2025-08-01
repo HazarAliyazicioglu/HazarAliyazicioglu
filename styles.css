@@ -41,7 +41,42 @@ header {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
+
+.logo::after {
+    content: 'TR';
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: #ff6200;
+}
+
+.logo.en::after {
+    content: 'ENG';
+}
+
+
+
+
+
+.logo:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
+.logo:hover::after {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+
 
 nav ul {
     list-style: none;
@@ -516,6 +551,12 @@ footer {
         gap: 1rem;
     }
     
+    .logo::after {
+        font-size: 0.6rem;
+    }
+    
+
+    
     .mobile-nav-toggle {
         display: block;
         position: absolute;
@@ -667,6 +708,12 @@ footer {
 @media (max-width: 480px) {
     .logo {
         font-size: 1.2rem;
+    }
+    
+
+    
+    .logo::after {
+        font-size: 0.6rem;
     }
     
     .hero-section {
