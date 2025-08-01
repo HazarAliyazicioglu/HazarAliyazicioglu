@@ -24,7 +24,58 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeScrollEffects();
     initializeSmoothScrolling();
     initializeCardAnimations();
+    initializeMobileNavigation();
+    initializeVideoEffects();
 });
+
+// Mobil navigasyon işlevselliği
+function initializeMobileNavigation() {
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav a');
+
+    if (mobileNavToggle && nav) {
+        mobileNavToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            
+            // Hamburger menü ikonunu değiştir
+            if (nav.classList.contains('active')) {
+                mobileNavToggle.textContent = '✕';
+                mobileNavToggle.setAttribute('aria-label', 'Menüyü kapat');
+            } else {
+                mobileNavToggle.textContent = '☰';
+                mobileNavToggle.setAttribute('aria-label', 'Menüyü aç');
+            }
+        });
+
+        // Mobil menüde link tıklandığında menüyü kapat
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileNavToggle.textContent = '☰';
+                mobileNavToggle.setAttribute('aria-label', 'Menüyü aç');
+            });
+        });
+
+        // Sayfa dışına tıklandığında menüyü kapat
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+                nav.classList.remove('active');
+                mobileNavToggle.textContent = '☰';
+                mobileNavToggle.setAttribute('aria-label', 'Menüyü aç');
+            }
+        });
+
+        // Ekran boyutu değiştiğinde menüyü sıfırla
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                nav.classList.remove('active');
+                mobileNavToggle.textContent = '☰';
+                mobileNavToggle.setAttribute('aria-label', 'Menüyü aç');
+            }
+        });
+    }
+}
 
 // Yazı animasyonu başlatma
 function initializeTypeEffect() {
@@ -76,11 +127,13 @@ function initializeScrollEffects() {
             header.style.background = 'rgba(15, 15, 35, 0.95)';
         }
 
-        // Scroll yönüne göre header'ı gizleme/gösterme
-        if (currentScrollY > lastScrollY && currentScrollY > 200) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
+        // Scroll yönüne göre header'ı gizleme/gösterme (mobilde devre dışı)
+        if (window.innerWidth > 768) {
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
         }
 
         lastScrollY = currentScrollY;
@@ -134,38 +187,41 @@ function initializeSmoothScrolling() {
     });
 }
 
-// Kart animasyonları
+// Kart animasyonları (mobilde devre dışı)
 function initializeCardAnimations() {
     const cards = document.querySelectorAll('.card');
     
     cards.forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.style.transform = 'translateY(-10px) scale(1.02)';
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'translateY(0) scale(1)';
-        });
+        // Sadece hover destekli cihazlarda animasyon
+        if (window.matchMedia('(hover: hover)').matches) {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        }
     });
 }
 
-// Video hover efektleri
+// Video hover efektleri (mobilde devre dışı)
 function initializeVideoEffects() {
     const videos = document.querySelectorAll('video');
     
     videos.forEach(video => {
-        video.addEventListener('mouseenter', () => {
-            video.style.transform = 'scale(1.05)';
-        });
-        
-        video.addEventListener('mouseleave', () => {
-            video.style.transform = 'scale(1)';
-        });
+        // Sadece hover destekli cihazlarda animasyon
+        if (window.matchMedia('(hover: hover)').matches) {
+            video.addEventListener('mouseenter', () => {
+                video.style.transform = 'scale(1.05)';
+            });
+            
+            video.addEventListener('mouseleave', () => {
+                video.style.transform = 'scale(1)';
+            });
+        }
     });
 }
-
-// Sayfa yüklendiğinde video efektlerini başlat
-document.addEventListener('DOMContentLoaded', initializeVideoEffects);
 
 // Loading animasyonu
 window.addEventListener('load', () => {
@@ -175,3 +231,38 @@ window.addEventListener('load', () => {
 
 // Sayfa yüklenirken body'yi gizle
 document.body.style.opacity = '0';
+
+// Touch gesture desteği
+function initializeTouchGestures() {
+    let startY = 0;
+    let startX = 0;
+    let isScrolling = false;
+
+    document.addEventListener('touchstart', (e) => {
+        startY = e.touches[0].clientY;
+        startX = e.touches[0].clientX;
+        isScrolling = false;
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isScrolling) {
+            const deltaY = Math.abs(e.touches[0].clientY - startY);
+            const deltaX = Math.abs(e.touches[0].clientX - startX);
+            
+            if (deltaY > deltaX && deltaY > 10) {
+                isScrolling = true;
+            }
+        }
+    }, { passive: true });
+
+    // Mobilde video kontrollerini iyileştir
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+        video.addEventListener('touchstart', (e) => {
+            e.stopPropagation();
+        }, { passive: true });
+    });
+}
+
+// Touch gesture'ları başlat
+document.addEventListener('DOMContentLoaded', initializeTouchGestures);

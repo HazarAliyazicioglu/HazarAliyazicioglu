@@ -13,6 +13,8 @@ body {
     color: #ffffff;
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* Header Styles */
@@ -70,6 +72,21 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
+/* Mobile Navigation */
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-nav-toggle:hover {
+    color: #ff6200;
+}
+
 /* Hero Section */
 .hero-section {
     min-height: 100vh;
@@ -81,6 +98,7 @@ nav ul li a:hover::after {
     padding: 0 2rem;
     background: radial-gradient(circle at center, rgba(255, 98, 0, 0.1) 0%, transparent 70%);
     position: relative;
+    padding-top: 80px; /* Header için alan */
 }
 
 .hero-section::before {
@@ -143,6 +161,10 @@ nav ul li a:hover::after {
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 98, 0, 0.3);
     display: inline-block;
+    min-height: 44px; /* Touch target için minimum yükseklik */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .cta-button.secondary {
@@ -267,6 +289,10 @@ section h2 {
     border: 1px solid rgba(255, 98, 0, 0.3);
     border-radius: 25px;
     transition: all 0.3s ease;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .social-links a:hover {
@@ -333,12 +359,16 @@ section h2 {
 
 .video-container {
     margin: 1rem 0;
+    position: relative;
+    width: 100%;
 }
 
 .card video {
     width: 100%;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    max-width: 100%;
+    height: auto;
 }
 
 .project-tech {
@@ -412,6 +442,7 @@ section h2 {
     gap: 0.5rem;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
+    min-height: 44px;
 }
 
 .contact-button:hover {
@@ -463,7 +494,17 @@ footer {
     }
 }
 
-/* Responsive Design */
+/* Enhanced Responsive Design */
+@media (max-width: 1024px) {
+    .project-cards {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .about-container {
+        margin: 0 1rem;
+    }
+}
+
 @media (max-width: 768px) {
     header {
         padding: 1rem;
@@ -471,54 +512,142 @@ footer {
         gap: 1rem;
     }
     
+    .mobile-nav-toggle {
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+    
+    nav {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    
+    nav.active {
+        max-height: 300px;
+    }
+    
     nav ul {
+        flex-direction: column;
         gap: 1rem;
+        padding: 1rem 0;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 0.5rem 0;
+        font-size: 1.1rem;
     }
     
     .hero-section {
         padding: 0 1rem;
+        min-height: 90vh;
     }
     
     .hero-section h1 {
-        font-size: 2rem;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        line-height: 1.2;
     }
     
     .hero-section p {
         font-size: 1rem;
+        line-height: 1.5;
     }
     
     .hero-buttons {
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
+        width: 100%;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
     }
     
     section {
         padding: 3rem 1rem;
     }
     
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
     .about-container {
         padding: 2rem;
+        margin: 0;
+    }
+    
+    .about-content p {
+        font-size: 1rem;
+        text-align: left;
     }
     
     .skills-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .project-cards {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .card {
         padding: 1.5rem;
     }
     
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .card-header h3 {
+        font-size: 1.3rem;
+    }
+    
     .social-links {
         gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .social-links a {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+    
+    .contact-container {
+        padding: 2rem;
+        margin: 0 1rem;
     }
     
     .contact-links {
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
+    }
+    
+    .contact-button {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+    }
+    
+    .video-container {
+        margin: 1rem -0.5rem;
+    }
+    
+    .card video {
+        border-radius: 10px;
     }
 }
 
@@ -527,23 +656,183 @@ footer {
         font-size: 1.2rem;
     }
     
-    nav ul {
-        flex-direction: column;
-        gap: 0.5rem;
+    .hero-section {
+        padding: 0 0.5rem;
+        padding-top: 100px;
+    }
+    
+    .hero-section h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-section p {
+        font-size: 0.9rem;
+    }
+    
+    section {
+        padding: 2rem 0.5rem;
+    }
+    
+    section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .about-container {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+    
+    .about-content p {
+        font-size: 0.9rem;
+    }
+    
+    .skills-section h3 {
+        font-size: 1.3rem;
+    }
+    
+    .skill-category {
+        padding: 1rem;
+    }
+    
+    .skill-category h4 {
+        font-size: 1.1rem;
+    }
+    
+    .card {
+        padding: 1rem;
+        border-radius: 15px;
+    }
+    
+    .card-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .project-tech {
+        gap: 0.3rem;
+    }
+    
+    .tech-tag {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+    
+    .contact-container {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+    
+    .contact-info h3 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-info p {
+        font-size: 0.9rem;
+    }
+    
+    .contact-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .contact-icon {
+        font-size: 1rem;
+    }
+    
+    footer {
+        padding: 1.5rem 0.5rem;
+    }
+    
+    .footer-content p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .hero-section h1 {
+        font-size: 1.4rem;
+    }
+    
+    .hero-section p {
+        font-size: 0.8rem;
+    }
+    
+    .cta-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .card-header h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .card:hover {
+        transform: none;
+    }
+    
+    .about-container:hover {
+        transform: none;
+    }
+    
+    .cta-button:hover {
+        transform: none;
+    }
+    
+    .contact-button:hover {
+        transform: none;
+    }
+    
+    .social-links a:hover {
+        transform: none;
+    }
+    
+    /* Touch feedback */
+    .cta-button:active,
+    .contact-button:active,
+    .social-links a:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Landscape Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 100vh;
+        padding-top: 120px;
     }
     
     .hero-section h1 {
         font-size: 1.8rem;
+        margin-bottom: 0.5rem;
     }
     
-    section h2 {
-        font-size: 2rem;
+    .hero-section p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
     }
     
-    .card-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+    .hero-buttons {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    
+    .cta-button {
+        width: auto;
+        max-width: none;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero-section::before {
+        background-size: 20px 20px;
     }
 }
 
